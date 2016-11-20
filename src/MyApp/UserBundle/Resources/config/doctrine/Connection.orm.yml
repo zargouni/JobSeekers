@@ -1,0 +1,53 @@
+MyApp\UserBundle\Entity\Connection:
+    type: entity
+    table: connection
+    indexes:
+        userOneId:
+            columns:
+                - userOneId
+        userTwoId:
+            columns:
+                - userTwoId
+        actionUserId:
+            columns:
+                - actionUserId
+    id: {  }
+    fields:
+        status:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    oneToOne:
+        useroneid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userOneId:
+                    referencedColumnName: userId
+            orphanRemoval: false
+        usertwoid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userTwoId:
+                    referencedColumnName: userId
+            orphanRemoval: false
+    manyToOne:
+        actionuserid:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                actionUserId:
+                    referencedColumnName: userId
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

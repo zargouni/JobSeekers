@@ -1,0 +1,37 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <div class="col-md-6">
+            <input class="input-signtype" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+
+        <div class="col-md-6">
+            <input class="input-signtype" type="password" id="password" name="_password" required="required" />
+        </div>
+
+        <div class="col-xs-6">
+            <div class="be-checkbox">
+                <label class="check-box">
+                    <input class="checkbox-input" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                </label>
+                <span class="large-popup-text">
+                    <label for="remember_me">Remember me</label>
+            </span>
+            </div>
+            <a href="blog-detail-2.html" class="link-large-popup">Forgot password?</a>
+        </div>
+        <div class="col-xs-6 for-signin">
+            <input type="submit" class="be-popup-sign-button" id="_submit" name="_submit" value="SIGN IN" />
+        </div>
+    </form>
+{% endblock %}

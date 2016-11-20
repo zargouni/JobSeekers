@@ -1,0 +1,6 @@
+my_app_user_homepage:
+    path:     /
+    defaults: { _controller: MyAppUserBundle:Home:index }
+my_app_user_loginpage:
+    path:     /
+    defaults: { _controller: MyAppUserBundle:Security:login }
